@@ -1,5 +1,1 @@
-- 👋 Hi, I’m ah_lol96
-- 👀 I’m interested in exploiting/cheating/hacking
-- 🌱 I’m currently learning lua
-- 💞️ I’m looking for friends
-- 📫 How to reach me = Discord ah_lol96#0071
+How to reach me = Discord ah_lol96
