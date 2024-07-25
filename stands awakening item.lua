@@ -18,6 +18,6 @@ end
 game.Players.LocalPlayer.OnTeleport:Connect(function(State)
     --if not tpcheck then
         --tpcheck = true
-        queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/ahlol96/stands_awakening/main/item'))()")
+        queue_on_teleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/ahlol96/ahlol96/main/stands%20awakening%20item.lua'))()")
     --end
 end)
