@@ -5653,28 +5653,35 @@ function ESP(plr)
 					end
 				end)
 				local function espLoop()
-					if COREGUI:FindFirstChild(plr.Name..'_ESP') then
-						if plr.Character and getRoot(plr.Character) and plr.Character:FindFirstChildOfClass("Humanoid") and Players.LocalPlayer.Character and getRoot(Players.LocalPlayer.Character) and Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
-							local pos = math.floor((getRoot(Players.LocalPlayer.Character).Position - getRoot(plr.Character).Position).magnitude)
-							local tealol = plr.Character:FindFirstChildOfClass("RayValue")
-							local armor = {}
-							for i,v in pairs(plr.Character:FindFirstChild("CurrentGear"):GetChildren()) do
-								table.insert(armor,v.Name)
+					local sukes,erok = pcall(function()
+						if COREGUI:FindFirstChild(plr.Name..'_ESP') then
+							if plr.Character and getRoot(plr.Character) and plr.Character:FindFirstChildOfClass("Humanoid") and Players.LocalPlayer.Character and getRoot(Players.LocalPlayer.Character) and Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") then
+								local pos = math.floor((getRoot(Players.LocalPlayer.Character).Position - getRoot(plr.Character).Position).magnitude)
+								local tealol = plr.Character:FindFirstChildOfClass("RayValue")
+								local armor = {}
+								if plr.Character:FindFirstChild("CurrentGear") then
+									for i,v in pairs(plr.Character:FindFirstChild("CurrentGear"):GetChildren()) do
+										table.insert(armor,v.Name)
+									end
+								end
+								if tealol and #armor == 0 then
+									TextLabel.Text = plr.Name..' | HP: '..round(plr.Character:FindFirstChildOfClass('Humanoid').Health, 1).." | "..pos..'m | '..tostring(plr:GetAttribute("Bounty"))..'$\nT: '..tealol.Name
+								elseif tealol and #armor > 0 then
+									TextLabel.Text = plr.Name..' | HP: '..round(plr.Character:FindFirstChildOfClass('Humanoid').Health, 1).." | "..pos..'m | '..tostring(plr:GetAttribute("Bounty"))..'$\nT: '..tealol.Name..' | A: '..table.concat(armor,", ")
+								elseif not tealol and #armor > 0 then
+									TextLabel.Text = plr.Name..' | HP: '..round(plr.Character:FindFirstChildOfClass('Humanoid').Health, 1).." | "..pos..'m | '..tostring(plr:GetAttribute("Bounty"))..'$\nA: '..table.concat(armor,", ")
+								elseif not tealol and #armor == 0 then
+									TextLabel.Text = plr.Name..' | HP: '..round(plr.Character:FindFirstChildOfClass('Humanoid').Health, 1).." | "..pos..'m | '..tostring(plr:GetAttribute("Bounty"))..'$'
+								end
 							end
-							if tealol and #armor == 0 then
-								TextLabel.Text = plr.Name..' | HP: '..round(plr.Character:FindFirstChildOfClass('Humanoid').Health, 1).." | "..pos..'m | '..tostring(plr:GetAttribute("Bounty"))..'$\nT: '..tealol.Name
-							elseif tealol and #armor > 0 then
-								TextLabel.Text = plr.Name..' | HP: '..round(plr.Character:FindFirstChildOfClass('Humanoid').Health, 1).." | "..pos..'m | '..tostring(plr:GetAttribute("Bounty"))..'$\nT: '..tealol.Name..' | A: '..table.concat(armor,", ")
-							elseif not tealol and #armor > 0 then
-								TextLabel.Text = plr.Name..' | HP: '..round(plr.Character:FindFirstChildOfClass('Humanoid').Health, 1).." | "..pos..'m | '..tostring(plr:GetAttribute("Bounty"))..'$\nA: '..table.concat(armor,", ")
-							elseif not tealol and #armor == 0 then
-								TextLabel.Text = plr.Name..' | HP: '..round(plr.Character:FindFirstChildOfClass('Humanoid').Health, 1).." | "..pos..'m | '..tostring(plr:GetAttribute("Bounty"))..'$'
-							end
+						else
+							teamChange:Disconnect()
+							addedFunc:Disconnect()
+							espLoopFunc:Disconnect()
 						end
-					else
-						teamChange:Disconnect()
-						addedFunc:Disconnect()
-						espLoopFunc:Disconnect()
+					end)
+					if not sukes then
+						warn(erok)
 					end
 				end
 				espLoopFunc = RunService.RenderStepped:Connect(espLoop)
