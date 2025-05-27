@@ -118,7 +118,7 @@ cloneref(game:GetService("RunService")).RenderStepped:Connect(function()
 			task.spawn(function()
 				local p = ps:GetPlayerFromCharacter(v)
 				if p then
-					local g = ESPCreate("ScreenGui",{Name = v.Name.."_MAINESP", Enabled = true, Parent = cg})
+					local g = ESPCreate("ScreenGui",{Name = v.Name.."_MAINESP", Enabled = true, Parent = game.CoreGui})
 					local Name = ESPCreate("TextLabel", {Name = "Name", Parent = g, Position = UDim2.new(0.5, 0, 0, -11), Size = UDim2.new(0, 100, 0, 20), AnchorPoint = Vector2.new(0.5, 0.5), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(255, 255, 255), Font = Enum.Font.Code, TextSize = ESP.FontSize, TextStrokeTransparency = 0, TextStrokeColor3 = Color3.fromRGB(0, 0, 0), RichText = true})
 					local Distance = ESPCreate("TextLabel", {Name = "Distance", Parent = g, Position = UDim2.new(0.5, 0, 0, 11), Size = UDim2.new(0, 100, 0, 20), AnchorPoint = Vector2.new(0.5, 0.5), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(255, 255, 255), Font = Enum.Font.Code, TextSize = ESP.FontSize, TextStrokeTransparency = 0, TextStrokeColor3 = Color3.fromRGB(0, 0, 0), RichText = true})
 					local Weapon = ESPCreate("TextLabel", {Name = "Weapon", Parent = g, Position = UDim2.new(0.5, 0, 0, 31), Size = UDim2.new(0, 100, 0, 20), AnchorPoint = Vector2.new(0.5, 0.5), BackgroundTransparency = 1, TextColor3 = Color3.fromRGB(255, 255, 255), Font = Enum.Font.Code, TextSize = ESP.FontSize, TextStrokeTransparency = 0, TextStrokeColor3 = Color3.fromRGB(0, 0, 0), RichText = true})
