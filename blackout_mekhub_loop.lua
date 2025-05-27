@@ -106,13 +106,6 @@ LootGUI.Icon.Parent = LootGUI.TL
 
 cloneref(game:GetService("RunService")).RenderStepped:Connect(function()
 	if not ESP or not Toggles or not chars then return end
-	if Toggles.Noclip.Value and lp.Character then
-		for i,v in pairs(lp.Character:GetDescendants()) do
-			if v:IsA("BasePart") and v.CanCollide == true then
-				v.CanCollide = false
-			end
-		end
-	end
 	if ESP.Enabled then
 		for i,v in pairs(chars) do
 			task.spawn(function()
@@ -384,6 +377,13 @@ cloneref(game:GetService("RunService")).RenderStepped:Connect(function()
 	for i,v in pairs(game.CoreGui:GetChildren()) do
 		if string.find(v.Name,"_MAINESP") and not workspace.Chars:FindFirstChild((string.gsub(v.Name,"_MAINESP",""))) then
 			v:Destroy()
+		end
+	end
+	if Toggles.Noclip and Toggles.Noclip.Value and lp.Character then
+		for i,v in pairs(lp.Character:GetDescendants()) do
+			if v:IsA("BasePart") and v.CanCollide == true then
+				v.CanCollide = false
+			end
 		end
 	end
 end)
