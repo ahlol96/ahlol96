@@ -34,7 +34,6 @@ function ESPCreate(Class, Properties)
 		_Instance = Instance.new(Class)
 	end
 	for Property, Value in pairs(Properties) do
-		task.wait()
 		_Instance[Property] = Value
 	end
 	return _Instance;
